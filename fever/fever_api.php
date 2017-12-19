@@ -10,8 +10,8 @@ class FeverAPI extends Handler {
 	const STATUS_ERR = 0;
 
 	// debugging only functions with JSON
-	const DEBUG = false; // enable if you need some debug output in your tinytinyrss root
-	const DEBUG_USER = 0; // your user id you need to debug - look it up in your mysql database and set it to a value bigger than 0
+	const DEBUG = true; // enable if you need some debug output in your tinytinyrss root
+	const DEBUG_USER = 1; // your user id you need to debug - look it up in your mysql database and set it to a value bigger than 0
 	const DEBUG_FILE = './debug_fever.txt'; // the file for debugging output
 	const ADD_ATTACHED_FILES = 1; //add link in bottom for attached files
 
@@ -43,6 +43,7 @@ class FeverAPI extends Handler {
 			if (self::DEBUG) {
 				// debug output
 				file_put_contents(self::DEBUG_FILE,'answer   : '.json_encode($arr)."\n",FILE_APPEND);
+				file_put_contents(self::DEBUG_FILE,'session   : '.json_encode($_SESSION)."\n",FILE_APPEND);
 			}
 		}
 	}
